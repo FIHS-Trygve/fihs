@@ -77,6 +77,21 @@ const FIHS_DB_KEY='sb_publishable_EKxGWNuewf93NYoRPfGsDg_rNgRq65z';
   fetch(FIHS_DB_URL+'/rest/v1/page_views',{method:'POST',keepalive:true,headers:{'apikey':FIHS_DB_KEY,'Authorization':'Bearer '+FIHS_DB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({path:location.pathname,referrer:ref?ref.slice(0,1000):null,source:source,session_id:sid})}).catch(()=>{});
  }catch(e){}
 })();
+// FIHS outbound click tracking (technical paper, patent, video, LinkedIn and enquiry actions).
+(function(){
+ const labels=[
+  ['doi.org','technical_paper'],['patents.google.com','patent'],['youtube.com','youtube'],['youtu.be','youtube'],['linkedin.com/company/fully-integrated-hybrid-system-fihs','linkedin']
+ ];
+ document.addEventListener('click',function(e){
+  const a=e.target.closest('a'); if(!a)return;
+  let name=null; const href=a.href||'';
+  for(const x of labels){if(href.includes(x[0])){name=x[1];break;}}
+  if(!name)return;
+  let sid=null;try{sid=sessionStorage.getItem('fihs_session_id');}catch(err){}
+  let source=null;if(document.referrer){try{source=new URL(document.referrer).hostname.replace(/^www\\./,'');}catch(err){}}
+  fetch(FIHS_DB_URL+'/rest/v1/click_events',{method:'POST',keepalive:true,headers:{'apikey':FIHS_DB_KEY,'Authorization':'Bearer '+FIHS_DB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({event_name:name,destination:href.slice(0,1000),path:location.pathname,source:source,session_id:sid})}).catch(()=>{});
+ },true);
+})();
 document.getElementById('enquiryForm').addEventListener('submit',async function(e){
  e.preventDefault();
  const form=e.currentTarget,status=document.getElementById('formStatus'),button=form.querySelector('button[type="submit"]');
