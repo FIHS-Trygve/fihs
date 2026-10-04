@@ -26,6 +26,7 @@ h1{font-size:clamp(2.5rem,5vw,4.7rem);line-height:1.04;margin:.3em 0 .28em;max-w
 section{padding:72px 0}.alt{background:var(--bg)}h2{font-size:2rem;margin:0 0 22px}h3{margin:0 0 10px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card{background:white;border:1px solid var(--line);padding:26px;border-radius:6px;box-shadow:0 8px 24px rgba(20,43,59,.045);position:relative}.card:before{content:'';display:block;width:34px;height:3px;background:var(--green);margin-bottom:18px}.principle{font-size:1.25rem;max-width:900px}.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:12px;margin:36px 0}.box{border:1px solid var(--line);border-top:3px solid var(--blue);padding:25px 15px;text-align:center;background:#fff;font-weight:700;box-shadow:0 7px 20px rgba(20,43,59,.04)}.arrow{font-size:1.7rem;color:var(--green)}.two{display:grid;grid-template-columns:1fr 1fr;gap:48px}.citation{border-left:4px solid var(--green);padding-left:20px}.small{font-size:.9rem;color:var(--muted)}footer{padding:42px 0;background:#142b3b;color:#e8eef1}footer a{color:#fff}
 @media(max-width:760px){.brand img{width:175px}nav .links{display:none}.grid,.two{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg);text-align:center}.hero{padding-top:65px}}
 .video-wrap{max-width:900px;margin:28px auto 0;aspect-ratio:16/9;background:#0e2635;border-radius:7px;overflow:hidden;box-shadow:0 12px 34px rgba(20,43,59,.10)}.video-wrap iframe{width:100%;height:100%;border:0}.video-intro{max-width:780px;color:var(--muted)}
+.enquiry{max-width:850px;margin-top:30px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-weight:700;font-size:.92rem}.field input,.field select,.field textarea{font:inherit;padding:12px 13px;border:1px solid #cbd6dc;border-radius:4px;background:#fff;color:var(--ink)}.field textarea{min-height:130px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid rgba(23,109,165,.18);border-color:var(--blue)}.form-note{font-size:.85rem;color:var(--muted);margin:14px 0}.form-status{font-weight:700;margin-left:12px}.hp{position:absolute;left:-9999px}.submit-btn{cursor:pointer}.submit-btn:disabled{opacity:.6;cursor:wait}@media(max-width:760px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"TechArticle","headline":"Decoupling Power Generation from Consumer Demand: The FIHS Architecture for Marine Hybrid Power Systems","author":{"@type":"Person","name":"Trygve Johannes Økland"},"identifier":"https://doi.org/10.5281/zenodo.23139731","about":["FIHS","Fully Integrated Hybrid System","marine hybrid power","diesel-electric propulsion","energy storage system"],"url":"https://fihs-trygve.github.io/fihs/"}
@@ -41,7 +42,42 @@ section{padding:72px 0}.alt{background:var(--bg)}h2{font-size:2rem;margin:0 0 22
 <section class="alt" id="video"><div class="wrap"><div class="eyebrow">Visual explanation</div><h2>See the FIHS principle in operation</h2><p class="video-intro">A short visual explanation of the FIHS operating principle and how the architecture separates generator operation from changing vessel demand.</p><div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/aDeSRikOw7c" title="FIHS – Fully Integrated Hybrid System" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><p class="small" style="text-align:center;margin-top:14px"><a href="https://youtu.be/aDeSRikOw7c">View on YouTube</a></p></div></section>
 <section id="paper"><div class="wrap"><h2>Technical paper</h2><div class="citation"><h3>Decoupling Power Generation from Consumer Demand: The FIHS Architecture for Marine Hybrid Power Systems</h3><p>Trygve Johannes Økland, 2026.</p><p>The paper describes the engineering background and development of FIHS, including propulsion efficiency investigations, hybrid power-system studies, generator operating efficiency, energy storage, dynamic positioning, redundancy, emissions and maintenance.</p><p><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.23139731">10.5281/zenodo.23139731</a></p></div></div></section>
 <section id="ip"><div class="wrap"><h2>Patent and intellectual property</h2><p>FIHS is patented technology developed by inventor Trygve Johannes Økland. The architecture is described in U.S. Patent No. 11,964,747, <em>Fully integrated hybrid power generation system for a vessel</em>.</p><p class="small">Publication of technical information on this website or in the technical paper does not grant a licence or authorization under FIHS patents, patent applications or related intellectual property. Commercial implementation may require a separate licence from the patent owner.</p></div></section>
-<section class="alt" id="contact"><div class="wrap"><h2>Contact</h2><p><strong>Trygve Johannes Økland</strong><br>Inventor &amp; Patent Owner | FIHS<br>Fully Integrated Hybrid System</p><p><a href="mailto:tjokland@hotmail.com">tjokland@hotmail.com</a><br>+47 977 05 143</p></div></section>
+<section class="alt" id="contact"><div class="wrap"><div class="eyebrow">Project enquiry</div><h2>Discuss a vessel or project</h2><p>If you are evaluating FIHS for a vessel, newbuild, power-system study or technical collaboration, send a short project enquiry below. The information is stored privately for FIHS project follow-up.</p>
+<form class="enquiry" id="enquiryForm">
+<div class="form-grid">
+<div class="field"><label for="name">Name *</label><input id="name" name="name" required maxlength="120"></div>
+<div class="field"><label for="company">Company *</label><input id="company" name="company" required maxlength="160"></div>
+<div class="field"><label for="position">Position</label><input id="position" name="position" maxlength="160"></div>
+<div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" required maxlength="254"></div>
+<div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" maxlength="60"></div>
+<div class="field"><label for="vessel_project_type">Vessel / project type</label><input id="vessel_project_type" name="vessel_project_type" maxlength="160" placeholder="e.g. OSV, SOV, ERRV, newbuild study"></div>
+<div class="field"><label for="project_stage">Project stage</label><select id="project_stage" name="project_stage"><option value="">Select</option><option>Early concept</option><option>Basic design</option><option>Detailed design</option><option>Newbuild / tender</option><option>Retrofit</option><option>Technical evaluation</option><option>Other</option></select></div>
+<div class="field"><label for="area_of_interest">Area of interest</label><select id="area_of_interest" name="area_of_interest"><option value="">Select</option><option>Vessel project / FIHS application</option><option>Engine / generating sets</option><option>Energy storage / batteries</option><option>Naval architecture / system design</option><option>Licensing / commercial</option><option>Technical collaboration</option><option>Other</option></select></div>
+<div class="field full"><label for="message">Project / message *</label><textarea id="message" name="message" required maxlength="5000" placeholder="Tell me briefly about the vessel, project or question."></textarea></div>
+<div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+</div>
+<p class="form-note">By submitting this form, you agree that the information provided may be stored and used to respond to your FIHS enquiry. It will not be published on this website.</p>
+<button class="btn primary submit-btn" type="submit">Send project enquiry</button><span class="form-status" id="formStatus" role="status" aria-live="polite"></span>
+</form>
+<p style="margin-top:36px"><strong>Trygve Johannes Økland</strong><br>Inventor &amp; Patent Owner | FIHS<br><a href="mailto:tjokland@hotmail.com">tjokland@hotmail.com</a> &nbsp; | &nbsp; +47 977 05 143</p></div></section>
 </main>
 <footer><div class="wrap"><strong>FIHS – Fully Integrated Hybrid System</strong><br><span class="small">© 2026 Trygve Johannes Økland. Technical publication: <a href="https://doi.org/10.5281/zenodo.23139731">DOI 10.5281/zenodo.23139731</a></span></div></footer>
+<script>
+const FIHS_DB_URL='https://wxmoohumouzoxfkcpnqr.supabase.co';
+const FIHS_DB_KEY='sb_publishable_EKxGWNuewf93NYoRPfGsDg_rNgRq65z';
+document.getElementById('enquiryForm').addEventListener('submit',async function(e){
+ e.preventDefault();
+ const form=e.currentTarget,status=document.getElementById('formStatus'),button=form.querySelector('button[type="submit"]');
+ if(form.website.value){status.textContent='Thank you.';form.reset();return;}
+ button.disabled=true;status.textContent='Sending…';
+ const fd=new FormData(form);
+ const payload={name:fd.get('name').trim(),company:fd.get('company').trim(),position:fd.get('position').trim()||null,email:fd.get('email').trim(),phone:fd.get('phone').trim()||null,vessel_project_type:fd.get('vessel_project_type').trim()||null,project_stage:fd.get('project_stage')||null,area_of_interest:fd.get('area_of_interest')||null,message:fd.get('message').trim()};
+ try{
+  const res=await fetch(FIHS_DB_URL+'/rest/v1/enquiries',{method:'POST',headers:{'apikey':FIHS_DB_KEY,'Authorization':'Bearer '+FIHS_DB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(payload)});
+  if(!res.ok)throw new Error('submit failed');
+  form.reset();status.textContent='Thank you — your enquiry has been received.';
+ }catch(err){status.textContent='Could not send the enquiry. Please use the email address below.';}
+ finally{button.disabled=false;}
+});
+</script>
 </body></html>
