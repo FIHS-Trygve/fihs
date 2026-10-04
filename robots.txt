@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fihs-trygve.github.io/fihs/sitemap.xml
