@@ -65,6 +65,18 @@ section{padding:72px 0}.alt{background:var(--bg)}h2{font-size:2rem;margin:0 0 22
 <script>
 const FIHS_DB_URL='https://wxmoohumouzoxfkcpnqr.supabase.co';
 const FIHS_DB_KEY='sb_publishable_EKxGWNuewf93NYoRPfGsDg_rNgRq65z';
+// Privacy-friendly FIHS traffic counter: no IP, cookies, fingerprinting or personal data are stored.
+(function(){
+ try{
+  const key='fihs_session_id';
+  let sid=sessionStorage.getItem(key);
+  if(!sid){sid=(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2));sessionStorage.setItem(key,sid);}
+  const ref=document.referrer||null;
+  let source=null;
+  if(ref){try{source=new URL(ref).hostname.replace(/^www\\./,'');}catch(e){}}
+  fetch(FIHS_DB_URL+'/rest/v1/page_views',{method:'POST',keepalive:true,headers:{'apikey':FIHS_DB_KEY,'Authorization':'Bearer '+FIHS_DB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({path:location.pathname,referrer:ref?ref.slice(0,1000):null,source:source,session_id:sid})}).catch(()=>{});
+ }catch(e){}
+})();
 document.getElementById('enquiryForm').addEventListener('submit',async function(e){
  e.preventDefault();
  const form=e.currentTarget,status=document.getElementById('formStatus'),button=form.querySelector('button[type="submit"]');
